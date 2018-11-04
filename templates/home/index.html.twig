@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form class="form-inline mb-2" id="home.index" method="get">
+        <label for="ip">Ip address</label>
+        <input id="ip" type="text" name="ip" autocomplete="off" class="form-control mx-sm-3 mb-2"/>
+        <button id="getipinfo" type="submit" class="btn btn-primary mb-2">Check</button>
+    </form>
+    <div class="mt-3">
+        <div id="error" class="alert alert-danger" style="display: none;">
+            An error occurred
+        </div>
+        <div id="loading" class="alert alert-info" style="display: none;">
+            Please, wait...
+        </div>
+        <div id="ipinfo">
+            {% verbatim %}
+            <script id="ipinfotmpl" type="text/html">
+                <div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Ip Address</div>
+                        <div class="col-9">{{ ipinfo.ip }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Country Code</div>
+                        <div class="col-9">{{ ipinfo.country_code }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Country</div>
+                        <div class="col-9">{{ ipinfo.country_rus }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Region</div>
+                        <div class="col-9">{{ ipinfo.region_rus }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">City</div>
+                        <div class="col-9">{{ ipinfo.city_rus }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Latitude</div>
+                        <div class="col-9">{{ ipinfo.latitude }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Longitude</div>
+                        <div class="col-9">{{ ipinfo.longitude }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Zip Code</div>
+                        <div class="col-9">{{ ipinfo.zip_code }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 font-weight-bold">Time Zone</div>
+                        <div class="col-9">{{ ipinfo.time_zone }}</div>
+                    </div>
+                </div>
+            </script>
+            {% endverbatim %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/mustache.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+{% endblock %}

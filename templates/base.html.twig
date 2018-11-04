@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Sibiryak54-test{% endblock %}</title>
+        {% block stylesheets %}
+            <link  rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'components/header.html.twig' %}
+        <div class="container pt-3">
+            {% block body %}{% endblock %}
+            {% block javascripts %}
+                <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+            {% endblock %}
+        </div>
+    </body>
+</html>
